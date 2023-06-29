@@ -4,18 +4,19 @@
   "description": "nestjs microservice",
   "main": "index.js",
   "scripts": {
-    "build": "../node_modules/.bin/nest build",
-    "format": "../node_modules/.bin/prettier --write \\\"src/**/*.ts\\\" \\\"test/**/*.ts\\\"",
-    "start": "../node_modules/.bin/nest start",
-    "start:dev": "../node_modules/.bin/nest start --watch",
-    "start:debug": "../node_modules/.bin/nest start --debug --watch",
+    "prebuild": "rimraf dist",
+    "build": "nest build",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "start": "nest start",
+    "start:dev": "nest start --watch",
+    "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
-    "lint": "../node_modules/.bin/eslint \\\"{src,apps,libs,test}/**/*.ts\\\" --fix",
-    "test": "../node_modules/.bin/jest",
-    "test:watch": "../node_modules/.bin/jest --watch",
-    "test:cov": "../node_modules/.bin/jest --coverage",
-    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register ../node_modules/.bin/jest --runInBand",
-    "test:e2e": "../node_modules/.bin/jest --config ./test/jest-e2e.json"
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage",
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "repository": {
     "type": "git",
@@ -54,6 +55,7 @@
     "testEnvironment": "node"
   },
   "devDependencies": {
+    "@nestjs/schedule": "^3.0.1",
     "@nestjs/schematics": "^10.0.1",
     "@nestjs/testing": "^10.0.3",
     "@types/express": "^4.17.17",
